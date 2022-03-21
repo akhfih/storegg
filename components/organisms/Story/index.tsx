@@ -1,4 +1,5 @@
-import Ilustration from "./Ilustration";
+import Ilustration from './Ilustration';
+
 export default function Story() {
   return (
     <section className="story pt-50 pb-50">

@@ -20,7 +20,7 @@ export default function index() {
               <Menu title="Discover" href="/discover" />
               <Menu title="Global Rank" href="/global-rank" />
 
-              <Auth isLogin />
+              <Auth />
 
             </ul>
           </div>

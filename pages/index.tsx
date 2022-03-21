@@ -25,11 +25,6 @@ const Home: NextPage = () => {
       <Reached />
       <Story />
       <Footer />
-
-
-      
-
-      
     </>
   );
 };

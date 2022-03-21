@@ -1,6 +1,20 @@
+import { useCallback, useEffect, useState } from 'react';
 import FeatuerItem from '../../molecules/FeatureItem';
+import { getFeaturedGame } from '../../../services/player';
+import { GameItemTypes } from '../../../services/data-types';
 
 export default function FeatureGame() {
+  const [gameList, setGameList] = useState([]);
+
+  const getFeatureGameList = useCallback(async () => {
+    const data = await getFeaturedGame();
+    setGameList(data);
+  }, [getFeaturedGame]);
+
+  useEffect(() => {
+    getFeatureGameList();
+  }, []);
+  const API_IMG = process.env.NEXT_PUBLIC_IMG;
   return (
     <section className="featured-game pt-50 pb-50">
       <div className="container-fluid">
@@ -14,11 +28,9 @@ export default function FeatureGame() {
           className="d-flex flex-row flex-lg-wrap overflow-setting justify-content-lg-between gap-lg-3 gap-4"
           data-aos="fade-up"
         >
-          <FeatuerItem thumbnail="Thumbnail-1" title="Super Mechs" category="Mobile" />
-          <FeatuerItem thumbnail="Thumbnail-2" title="Super Mechs" category="Mobile" />
-          <FeatuerItem thumbnail="Thumbnail-3" title="Super Mechs" category="Mobile" />
-          <FeatuerItem thumbnail="Thumbnail-4" title="Super Mechs" category="Mobile" />
-          <FeatuerItem thumbnail="Thumbnail-5" title="Super Mechs" category="Mobile" />
+          {gameList.map((item: GameItemTypes) => (
+            <FeatuerItem id={item._id} key={item._id} thumbnail={`${API_IMG}/${item.thumbnail}`} title={item.name} category={item.category.name} />
+          ))}
         </div>
       </div>
     </section>

@@ -1,9 +1,11 @@
+import SideBar from '../../../components/organisms/SideBar';
+
 export default function index() {
   return (
     <>
       {/* <!-- Transactions --> */}
       <section className="transactions overflow-auto">
-
+        <SideBar activeMenu="transaction" />
         <main className="main-wrapper">
           <div className="ps-lg-0">
             <h2 className="text-4xl fw-bold color-palette-1 mb-30">My Transactions</h2>
@@ -235,4 +237,27 @@ export default function index() {
       </section>
     </>
   );
+}
+
+interface GetServerSideProps {
+  req: {
+    cookies: {
+      token: string;
+    }
+  }
+}
+
+export async function getServerSideProps({ req }: GetServerSideProps) {
+  const { token } = req.cookies;
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/sign-in',
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
 }

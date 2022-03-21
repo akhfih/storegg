@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/utilities.css';
 import '../styles/homepage.css';
@@ -18,10 +19,12 @@ import '../styles/navbar-log-in.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    import('bootstrap/dist/js/bootstrap.bundle.min');
+    require('bootstrap/dist/js/bootstrap.bundle.min');
   }, []);
   return (
     <>
@@ -34,6 +37,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Component {...pageProps} />
+      <ToastContainer />
     </>
   );
 }

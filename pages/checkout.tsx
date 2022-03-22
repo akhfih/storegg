@@ -2,7 +2,7 @@ import jwtDecode from 'jwt-decode';
 import ChekoutItem from '../components/organisms/CheckoutItem';
 import CheckoutDetail from '../components/organisms/CheckoutDetail';
 import CheckoutConfirmastion from '../components/organisms/CheckoutConfirmation';
-import { GameItemTypes, JWTPayloadTypes, UserTypes } from '../services/data-types';
+import { JWTPayloadTypes, UserTypes } from '../services/data-types';
 
 interface CheckoutProps {
   user: UserTypes

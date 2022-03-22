@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import { useState, useEffect, useCallback } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 import { setSignUp } from '../services/auth';
 import { getGameCategory } from '../services/player';
 import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from 'next/router';
+import { CategoryTypes } from '../services/data-types';
 
 export default function SignUpPhoto() {
   const [categories, setCategories] = useState([]);
@@ -20,7 +21,7 @@ export default function SignUpPhoto() {
   const getGameCategoryAPI = useCallback(async () => {
     const data = await getGameCategory();
     setCategories(data);
-    console.log('data: ', data);
+    // console.log('data: ', data);
     setFavorite(data[0]._id);
   }, [getGameCategory]);
 
@@ -30,14 +31,14 @@ export default function SignUpPhoto() {
 
   useEffect(() => {
     const getLocalForm = localStorage.getItem('user-form');
-    setLocalForm(JSON.parse(getLocalForm));
+    setLocalForm(JSON.parse(getLocalForm!));
   }, []);
 
   const onSubmit = async () => {
     // console.log('favorite: ', favorite);
     // console.log('image: ', image);
     const getLocalForm = await localStorage.getItem('user-form');
-    const form = JSON.parse(getLocalForm);
+    const form = JSON.parse(getLocalForm!);
     const data = new FormData();
 
     data.append('image', image);
@@ -105,7 +106,7 @@ export default function SignUpPhoto() {
                     value={favorite}
                     onChange={(event) => setFavorite(event.target.value)}
                   >
-                    {categories.map((category) => (
+                    {categories.map((category: CategoryTypes) => (
                       <option
                         key={category._id}
                         value={category._id}

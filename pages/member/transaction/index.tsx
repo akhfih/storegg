@@ -1,4 +1,5 @@
 import SideBar from '../../../components/organisms/SideBar';
+import TransactionContent from '../../../components/organisms/TransactionContent';
 
 export default function index() {
   return (
@@ -6,7 +7,8 @@ export default function index() {
       {/* <!-- Transactions --> */}
       <section className="transactions overflow-auto">
         <SideBar activeMenu="transaction" />
-        <main className="main-wrapper">
+        <TransactionContent />
+        {/* <main className="main-wrapper">
           <div className="ps-lg-0">
             <h2 className="text-4xl fw-bold color-palette-1 mb-30">My Transactions</h2>
             <div className="mb-30">
@@ -233,7 +235,7 @@ export default function index() {
               </div>
             </div>
           </div>
-        </main>
+        </main> */}
       </section>
     </>
   );

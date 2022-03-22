@@ -7,7 +7,9 @@ interface FeatureItemProps {
     id : string;
 }
 
-export default function FeatuerItem({ thumbnail, title, category, id } : FeatureItemProps) {
+export default function FeatuerItem({
+  thumbnail, title, category, id,
+} : FeatureItemProps) {
   return (
     <div className="featured-game-card position-relative">
       <a href={`./detail/${id}`}>

@@ -4,10 +4,10 @@ import { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
-import jwt_decode from 'jwt-decode';
+// import jwt_decode from 'jwt-decode';
 import Cookies from 'js-cookie';
 import { setLogin } from '../../../services/auth';
-import Input from '../../atoms/Input/Input';
+// import Input from '../../atoms/Input/Input';
 
 export default function SignForm() {
   const [email, setEmail] = useState('');
